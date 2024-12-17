@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 class CurrencyConverter extends StatelessWidget {
   const CurrencyConverter({super.key});
   @override
+
   Widget build(BuildContext context) {
+  // store the border widget in one variable
     final border = OutlineInputBorder(
       borderSide: BorderSide(
         color: Color.fromARGB(255, 255, 0, 0),
