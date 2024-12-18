@@ -1,11 +1,19 @@
 import 'dart:ui' as ui;
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class CurrencyConverter extends StatelessWidget {
-  const CurrencyConverter({super.key});
+class CurrencyConverterState extends StatefulWidget{
+  const CurrencyConverterState({super.key});
+  @override
+  State<CurrencyConverterState> createState() =>  _CurrencyConverter();
+}
+
+class _CurrencyConverter extends State<CurrencyConverterState>{
+  
+  double result = 0;
+  final TextEditingController textEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+  // strore result in a variable
     // store the border widget in one variable
     final border = OutlineInputBorder(
       borderSide: BorderSide(
@@ -30,23 +38,24 @@ class CurrencyConverter extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              "0",
-              style: TextStyle(
-                  fontSize: 40,
+            Text(
+              "INR  " + result.toStringAsFixed(2),
+              style:const TextStyle(
+                  fontSize: 30,
                   fontWeight: FontWeight.bold,
                   color: Colors.cyanAccent),
             ),
             Container(
               padding: const EdgeInsets.all(10),
               child: TextField(
+                controller: textEditingController,
                 keyboardType:
                     const TextInputType.numberWithOptions(decimal: true),
                 style: const TextStyle(color: Color.fromARGB(255, 0, 124, 37)),
                 decoration: InputDecoration(
                   focusedBorder: border,
                   enabledBorder: border,
-                  hintText: "Please enter the amount",
+                  hintText: "Enter the amount in USD",
                   hintStyle:
                       const TextStyle(color: Color.fromARGB(179, 0, 0, 0)),
                   prefixIcon: const Icon(Icons.monetization_on_outlined),
@@ -61,9 +70,9 @@ class CurrencyConverter extends StatelessWidget {
               child: ElevatedButton(
                 
                 onPressed: () {
-                  if (kDebugMode) {
-                    print("converted");
-                  }
+                  setState(() {
+                  result = double.parse(textEditingController.text)*84.9;
+                  });
                 },
                 style:ElevatedButton.styleFrom(
                   elevation: 15,
