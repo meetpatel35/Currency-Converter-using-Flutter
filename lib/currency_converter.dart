@@ -39,7 +39,7 @@ class _CurrencyConverter extends State<CurrencyConverterState>{
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "INR  " + result.toStringAsFixed(2),
+              "INR ${result.toStringAsFixed(2)}",
               style:const TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
